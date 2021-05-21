@@ -1,0 +1,27 @@
+    {% extends 'back/master.html' %}
+    {% load static %}
+
+    {% block body %}
+        <!-- Page content -->
+        <div id="page-content">
+            <!-- Datatables Content -->
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>Error</strong> Adding</h2>
+                </div>
+                <p>Error happed during form submission.</p>
+                <p>{{error}}</p>
+            </div>
+            <!-- END Datatables Content -->
+        </div>
+        <!-- END Page Content -->
+    {% endblock body %}
+
+        
+    {% block javascript %}
+        <!-- Load and execute javascript code used only in this page -->
+        <script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+        <script>$(function(){ TablesDatatables.init(); });</script>
+    {% endblock javascript %}
+        
+    

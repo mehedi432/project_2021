@@ -1,0 +1,62 @@
+    {% extends 'back/master.html' %}
+    {% load static %}
+
+    {% block body %}
+        <!-- Page content -->
+        <div id="page-content">
+            <!-- Datatables Content -->
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>News</strong> List</h2>
+                </div>
+                <p>You can add, delete, edit your data.</p>
+
+                <div class="table-responsive">
+                    <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center"><i class="gi gi-user"></i></th>
+                                <th>Title</th>
+                                <th>Image</th>
+                                <th>Date & Time</th>
+                                <th>Category</th>
+                                <th class="text-center">Views</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for news in news %}
+                            <tr>
+                                <td class="text-center">{{news.pk}}</td>
+                                <td class="text-center"><img src="{% static 'back/img/placeholders/avatars/avatar15.jpg' %}" alt="avatar" class="img-circle"></td>
+                                <td>{{news.short_text}}</td>
+                                <td class='text-center'><a href="javascript:void(0)"><img style='height: 55px; width:55px;' src="{{ news.picture_url }}" alt="avatar" class="img-circle"></a></td>
+                                <td>{{news.publish_date}} | {{news.publish_time}}</td>
+                                <td><span class="label label-info">{{news.category}}</span></td>
+                                <td>{{news.views}}</td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a href="javascript:void(0)" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a>
+                                        <a href="{% url 'news:news-delete' pk=news.pk %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- END Datatables Content -->
+        </div>
+        <!-- END Page Content -->
+    {% endblock body %}
+
+        
+    {% block javascript %}
+        <!-- Load and execute javascript code used only in this page -->
+        <script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+        <script>$(function(){ TablesDatatables.init(); });</script>
+    {% endblock javascript %}
+        
+    

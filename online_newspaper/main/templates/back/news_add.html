@@ -1,0 +1,71 @@
+    {% extends 'back/master.html' %}
+    {% load static %}
+
+    {% block body %}
+        <!-- Page content -->
+        <div id="page-content">
+            <!-- Datatables Content -->
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>News</strong> Add</h2>
+                </div>
+                <p>You can Add a news article from here.</p>
+                <!-- Input Grid Content -->
+                    <form action="{% url 'news:news-add' %}" method="post" enctype='multipart/form-data' class="form-horizontal form-bordered">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <input type="text" id='newstitle' name='newstitle' class="form-control" placeholder="News Title">
+                            </div>
+                            <div class="col-md-4">
+                                <select id="newscat" name="newscat" class="select-chosen" data-placeholder="Category" style="width: 250px;">
+                                    <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
+                                    <option value="cat1">Cat 1</option>
+                                    <option value="cat2">Cat 2</option>
+                                    <option value="cat3">Cat 3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <textarea type="text" id='newstxtshort' name='newstxtshort' rows=5 class="form-control" placeholder="Short Text"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <textarea type="textarea" id='newstxtlong' name='newstxtlong' rows=5 class="form-control" placeholder="Body Text"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="file" id='myfile' name='myfile' rows=5 class="form-control" placeholder="Body Text">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-block btn-secondary">Submit</button>
+                            </div>
+                        </div>
+
+                        
+                    </form>
+                    <!-- END Input Grid Content -->  
+            </div>
+            <!-- END Datatables Content -->
+        </div>
+        <!-- END Page Content -->
+    {% endblock body %}
+
+        
+    {% block javascript %}
+        <!-- Load and execute javascript code used only in this page -->
+        <script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+        <script>$(function(){ TablesDatatables.init(); });</script>
+    {% endblock javascript %}
+        
+    
