@@ -1,0 +1,86 @@
+    {% extends 'back/master.html' %}
+    {% load static %}
+
+    {% block headblock %}
+        <script src="{% static 'back/ckeditor/ckeditor.js' %}"></script>
+    {% endblock headblock %}
+
+    {% block body %}
+        <!-- Page content -->
+        <div id="page-content">
+            <!-- Datatables Content -->
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>News</strong> Edit</h2>
+                </div>
+                <p>You can Edit a news article from here.</p>
+                <!-- Input Grid Content -->
+                    <form action="{% url 'news:news-edit' pk %}" method="post" enctype='multipart/form-data' class="form-horizontal form-bordered">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <input type="text" id='newstitle' value='{{news.name}}' name='newstitle' class="form-control" placeholder="News Title">
+                            </div>
+                            <div class="col-md-4">
+                                <select id="newscat" name="newscat" class="select-chosen" data-placeholder="{{news.category}}" style="width: 250px;">
+                                    
+                                    <option value="{{news.category_id}}">{{news.category}}</option>
+                                    
+                                    {% for option in subcategory %}
+                                        <option value="{{option.pk}}">{{option.category_name}} | {{option.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <textarea type="text" id='newstxtshort' value='{{news.short_text}}' name='newstxtshort' rows=5 class="form-control" placeholder="">{{news.short_text}}</textarea>
+                            </div>
+                        </div>
+
+                        <script>
+                            CKEDITOR.replace('newstxtshort');
+                        </script>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <textarea type="textarea" id='newstxtlong' value='' name='newstxtlong' rows=5 class="form-control" placeholder="">{{news.long_text}}</textarea>
+                            </div>
+                        </div>
+                        <script>
+                            CKEDITOR.replace('newstxtlong');
+                        </script>
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <input type="file" id='myfile' name='myfile' class="form-control" placeholder="Body Text">
+                            </div>
+                            <div class="col-md-6">
+                                <img style='height: 233px; width:233px; border-radius: 5px' src="{{news.picture_url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-block btn-secondary">Submit</button>
+                            </div>
+                        </div>
+
+                        
+                    </form>
+                    <!-- END Input Grid Content -->  
+            </div>
+            <!-- END Datatables Content -->
+        </div>
+        <!-- END Page Content -->
+    {% endblock body %}
+
+        
+    {% block javascript %}
+        <!-- Load and execute javascript code used only in this page -->
+        <script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+        <script>$(function(){ TablesDatatables.init(); });</script>
+    {% endblock javascript %}
+        
+    

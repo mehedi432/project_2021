@@ -1,0 +1,56 @@
+    {% extends 'back/master.html' %}
+    {% load static %}
+
+    {% block body %}
+        <!-- Page content -->
+        <div id="page-content">
+            <!-- Datatables Content -->
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>Sub Category</strong> Add</h2>
+                </div>
+                <p>You can Add a sub category from here.</p>
+                <!-- Input Grid Content -->
+                    <form action="{% url 'subcategory:subcategory-add' %}" method="post" enctype='multipart/form-data' class="form-horizontal form-bordered">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <input type="text" id='subcategory_name' name='subcategory_name' class="form-control" placeholder="Category Name">
+                            </div>
+
+                            <div class="col-md-4">
+                                <select id="newscat" name="newscat" class="select-chosen" data-placeholder="Category" style="width: 250px;">
+                                    {% for option in category %}
+                                        <option value="{{option.pk}}">{{option.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-md-8"></div>
+                            
+                            <div class="col-md-4 text-center">
+                                <button type="submit" class="btn btn-block btn-secondary">Submit</button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                    <!-- END Input Grid Content -->  
+            </div>
+            <!-- END Datatables Content -->
+        </div>
+        <!-- END Page Content -->
+    {% endblock body %}
+
+        
+    {% block javascript %}
+        <!-- Load and execute javascript code used only in this page -->
+        <script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+        <script>$(function(){ TablesDatatables.init(); });</script>
+    {% endblock javascript %}
+        
+    

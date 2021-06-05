@@ -1,6 +1,10 @@
     {% extends 'back/master.html' %}
     {% load static %}
 
+    {% block headblock %}
+        <script src="{% static 'back/ckeditor/ckeditor.js' %}"></script>
+    {% endblock headblock %}
+    
     {% block body %}
         <!-- Page content -->
         <div id="page-content">
@@ -19,10 +23,9 @@
                             </div>
                             <div class="col-md-4">
                                 <select id="newscat" name="newscat" class="select-chosen" data-placeholder="Category" style="width: 250px;">
-                                    <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
-                                    <option value="cat1">Cat 1</option>
-                                    <option value="cat2">Cat 2</option>
-                                    <option value="cat3">Cat 3</option>
+                                    {% for option in subcategory %}
+                                        <option value="{{option.pk}}">{{option.category_name}} | {{option.name}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -33,16 +36,22 @@
                             </div>
 
                         </div>
+                        <script>
+                            CKEDITOR.replace('newstxtshort');
+                        </script>
 
                         <div class="form-group">
                             <div class="col-md-12">
                                 <textarea type="textarea" id='newstxtlong' name='newstxtlong' rows=5 class="form-control" placeholder="Body Text"></textarea>
                             </div>
                         </div>
+                        <script>
+                            CKEDITOR.replace('newstxtlong');
+                        </script>
 
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input type="file" id='myfile' name='myfile' rows=5 class="form-control" placeholder="Body Text">
+                                <input type="file" id='myfile' name='myfile' class="form-control" placeholder="Body Text">
                             </div>
                         </div>
                         

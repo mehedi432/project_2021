@@ -70,4 +70,10 @@ Part Seven - Delete a record of post
 1. Delete the post with associate Image file
 2. Also delete uploaded other type of file
 
+Part Eight - Category & SubCategory
+1. Make a new app named as category
+2. Category CRUD
+3. Make Subcategory app
+4. Make relation with category to subcategory
+5. Add subcategory to our add news page
 

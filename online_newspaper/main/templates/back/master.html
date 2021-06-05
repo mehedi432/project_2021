@@ -43,6 +43,7 @@
 
         <!-- Modernizr (browser feature detection library) -->
         <script src="{% static 'back/js/vendor/modernizr.min.js' %}"></script>
+        {% block headblock %}{% endblock headblock %}
     </head>
     <body>
         
@@ -92,9 +93,31 @@
                             <!-- Sidebar Navigation -->
                             <ul class="sidebar-nav">
 
-                            <li class="sidebar-header">
+                                <li class="sidebar-header">
                                     <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
                                     <span class="sidebar-header-title">Site Settings</span>
+                                </li>
+                                <li>
+                                    <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
+                                    <ul>
+                                        <li>
+                                            <a href="{% url 'category:category-add' %}">Add Category</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'category:category-list' %}">Manage Category</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Sub Category</span></a>
+                                    <ul>
+                                        <li>
+                                            <a href="{% url 'subcategory:subcategory-add' %}">Add Sub Category</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'subcategory:subcategory-list' %}">Manage Sub Category</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">News</span></a>

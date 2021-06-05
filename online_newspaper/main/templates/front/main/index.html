@@ -266,7 +266,7 @@
               <a
                 href="{% url 'news:news-details' pk=latest.pk %}"
                 class="f1-m-3 cl2 hov-cl10 trans-03">
-                {{latest.short_text}}
+                {{latest.short_text|safe}}
               </a>
             </h5>
 
