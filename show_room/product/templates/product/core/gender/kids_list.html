@@ -1,0 +1,40 @@
+{% extends 'product/master.html' %}
+{% load static %}
+
+{% block main %}
+    
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title mt-3 mb-0 p-0" data-aos="fade-up">
+          <h2>Kid's Product's</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          {% for product in products %}
+            <div class="col-lg-4 col-md-6 align-items-stretch">
+              <div class="card" id='product-card'>
+                <a href="{% url 'product:product_details' product.id %}">
+                <img style='weight: 233pt; height: 233pt;' class='card-img-top' src="{{ product.product_image.url }}" alt="" srcset=""></a>
+                <h4 class='mt-1 text-center mb-0'><a href="{% url 'product:product_details' product.id %}">{{product.product_style}}</a></h4>
+                <p class='text-center'><a href="{% url 'product:product_details' product.id %}">{{product.product_composition}}</a></p>
+              </div>
+              <br>
+            </div>
+            
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+  </main><!-- End #main -->
+
+{% endblock main %}
+
+{% block script %}
+   
+{% endblock script %}

@@ -1,0 +1,31 @@
+{% extends 'product/master.html' %}
+
+
+{% block main %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            {% for product in object_list %}
+                <div class="col-md-4 col-sm-4">
+                        <div class="card" style="" >
+                            <a href="{% url 'product:product_details' product.id%}" style="text-decoration:none">
+                            <img class="card-img-top" src={{product.product_image.url}} alt="{{product.product_style}}" style="width:100%" width="21rem" height="233rem">
+                            <div class="card-body">
+                                <h4 class="card-title font-weight-bolder text-dark" style="font-size: 13pt; margin-top: -5pt;">{{product.product_style}}</h4>
+                                <p class="card-text text-dark" style="font-size: 13pt; margin-top: -5pt;">{{product.product_composition}}</p>
+                            </div>
+                        </div>
+                        <br>
+                    </a>
+                </div>
+            {% empty %}
+                <div class="jumbotron text-center">
+                    No product found
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+    </div>
+
+
+{% endblock main %}

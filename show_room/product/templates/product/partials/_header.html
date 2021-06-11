@@ -1,0 +1,45 @@
+  <!-- ======= Header ======= -->
+  <header id="header" style="background-color: #fffff0">
+    <div class="container d-flex ">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="{% url 'product:product_index'%}"><span>MEEK</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block ">
+        <ul>
+          <li class="active"><a href="{% url 'product:product_index'%}">Home</a></li>
+
+          <li class="drop-down"><a href="#">Category</a>
+            <ul>
+              <li><a href="{% url 'cardigan_index' %}">Cardigan</a></li>
+              <li><a href="{% url 'pullover_index' %}">Pullover</a></li>
+              <li><a href="{% url 'vest_index' %}">Vest</a></li>
+
+
+              <li class="drop-down"><a href="#"> Gender </a>
+                <ul>
+                  <li><a href="{% url 'male_index' %}">Male</a></li>
+                  <li><a href="{% url 'female_index' %}">Female</a></li>
+                  <li><a href="{% url 'kids_index' %}">Kids</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li><a href="services.html">Merchant</a></li>
+          <li><a href="portfolio.html">Buyer</a></li>
+          <li><a href="{% url 'admin:index'%}">Admin</a></li>
+          <li class='m-1 ml-2'>
+            <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'product:search' %}">
+              <input class="form-control mr-sm-2" name="q" type="search" placeholder=" " aria-label="Search">
+              <button class="btn btn-secondary my-2 my-sm-0 p-2" type="submit">Search</button>
+            </form>
+          </li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
