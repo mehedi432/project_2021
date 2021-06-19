@@ -1,6 +1,7 @@
 from django.db import models
 from gender.models import Gender
 from category.models import Category
+from merchant.models import Merchant
 
 
 # Create your models here.
@@ -12,9 +13,9 @@ class Product(models.Model):
     product_weight = models.CharField(max_length=13)
     product_moq = models.CharField(max_length=13)
     product_fob = models.CharField(max_length=13)
-    product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    product_gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
-    product_merchant = models.IntegerField(default=0)
+    product_category = models.ForeignKey(Category, on_delete=models.SET_DEFAULT, default="-")
+    product_gender = models.ForeignKey(Gender, on_delete=models.SET_DEFAULT, default="-")
+    product_merchant = models.ForeignKey(Merchant, on_delete=models.SET_DEFAULT, default="Admin")
     product_buyer = models.IntegerField(default=0)
     product_shipment_date = models.DateField(auto_now_add=False)
     product_quantity = models.IntegerField(default=0)

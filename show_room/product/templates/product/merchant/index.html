@@ -1,0 +1,40 @@
+{% extends 'product/master.html' %}
+{% load static %}
+
+{% block main %}
+    
+  <main id="main">
+
+    <!-- ======= Merchant Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title mt-3 mb-0 p-0" data-aos="fade-up">
+          <h2>Our Glorious Merchant's</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          {% for merchant in merchants %}
+            <div class="col-lg-4 col-md-6 align-items-stretch">
+              <div class="card" id='product-card' data-aos="fade-up">
+                <a href="">
+                <img style='weight: 233pt; height: 233pt;' class='card-img-top' src="" alt="" srcset=""></a>
+                <h4 class='mt-1 text-center mb-0'><a href="">{{merchant.merchant_name}}</a></h4>
+                <p class='text-center'><a href="">{{merchant.merchant_email}}</a></p>
+              </div>
+              <br>
+            </div>
+            
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Merchant Section -->
+
+  </main><!-- End #main -->
+
+{% endblock main %}
+
+{% block script %}
+   
+{% endblock script %}

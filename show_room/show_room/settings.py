@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'category.apps.CategoryConfig',
     'gender.apps.GenderConfig',
     'core.apps.CoreConfig',
+    'merchant.apps.MerchantConfig',
 ]
 
 MIDDLEWARE = [
